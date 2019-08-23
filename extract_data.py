@@ -11,9 +11,9 @@ import time
 import argparse
 
 # Setup for PRAW requests. Need to register app with Reddit
-client_id = "nO_mDmPsVetqqA"
-secret = "El5eOH0mrcTWNq4RbHClcbtsqXo"
-user_agent = "linux:com.localhost.memeclassifier:v1.0 (by /u/paullewislobo)"
+client_id = ""
+secret = ""
+user_agent = ""
 
 reddit = praw.Reddit(client_id=client_id,
                      client_secret=secret,
