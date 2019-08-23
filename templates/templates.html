@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p>List of Templates</p>
+    <table>
+        <tr>
+            <td align="center" valign="center">
+                <p>Unknown</p>
+                <a href="reports?template=Unknown&page_no=1&records_per_page=20">View Processed Images</a>
+            </td>
+        </tr>
+        {% for key, value in memes.iterrows() %}
+        <tr>
+            <td align="center" valign="center">
+                <p>{{ value.TITLE }} | {{value.COUNT}}</p>
+                <img src="{{url_for('static', filename=value.FILE_PATH)}}" style="height:150px; width: 150px;"></br>
+                <a href="reports?template={{value.TITLE}}&page_no=1&records_per_page=20">View Processed Images</a>
+                <a href="training?template={{value.TITLE}}">View Training Images</a>
+                <a href="testing?template={{value.TITLE}}">View Testing Images</a>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

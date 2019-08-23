@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <script>
+    function deleteImage(id) {
+        url = document.referrer
+        ref = url.match(/:\/\/(.[^/]+)/)[1];
+        url = ref + "/delete?file="+ id.trim()
+        //var xhttp = new XMLHttpRequest();
+        //xhttp.open("GET", url, true);
+        //xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //xhttp.send();
+        //var response = JSON.parse(xhttp.responseText);
+        console.log(url)
+        setTimeout(function(){document.location.href = url},500);
+        return false;
+    }
+    </script>
+
+    <h1>{{ template }}</h1>
+
+    <table>
+        {% for file in file_list %}
+        <div align="center" valign="center">
+            <div style="border:thin silver solid;">
+                <img src="{{url_for('static', filename=file)}}" style="height:300px; width: 300px;">
+                <button onclick="window.location='/delete?file={{ file }}'" target="_blank">Delete</button>
+            </div>
+        </div>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ template }}</h1>
+
+    <table>
+        {% for meme_list in all_memes %}
+        <tr>
+            {% for value in meme_list %}
+            <td align="center" valign="center">
+
+                <div style="border:thin silver solid;">
+                    <p>{{ value.TITLE }} {{ value.ID }}</p>
+                    <img src="{{ value.IMAGE_URL }}" alt="{{ value.PREDICTION}}" style="height:300px; width: 300px;">
+                    <p>CLOSEST_CLASS : {{ value.PREDICTED_CLASS }} PREDICTED_PERCENTAGE : {{ value.PREDICTED_PERCENTAGE }}</p>
+                    <p>PREDICTED_SCORE : {{ value.PREDICTED_SCORE }} CLASS_MEAN_SCORE : {{ value.CLASS_MEAN_SCORE }}</p>
+                    <button onclick="window.location='/unknown?url={{ value.IMAGE_URL }}'" target="_blank">Move to Unknown</button>
+                </div>
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+
